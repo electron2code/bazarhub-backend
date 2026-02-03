@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/server.js",
-    "dev": "tsup src/server.ts --format esm --watch --onSuccess \"node dist/server.js\""
+    "dev": "tsup src/server.ts --format esm --watch --onSuccess \"node dist/server.js\"",
+    "build": "tsup src/server.ts --format esm --clean --minify --sourcemap",
+    "postinstall": "prisma generate"
   },
   "keywords": [],
   "author": "",
