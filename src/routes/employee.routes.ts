@@ -1,6 +1,6 @@
 import express from "express";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
-import { addEmployee, deleteEmployee, getEmployees, updateEmployee } from "../controllers/employee.controllers.ts";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { addEmployee, deleteEmployee, getEmployees, updateEmployee } from "../controllers/employee.controllers.js";
 
 const router = express.Router();
 

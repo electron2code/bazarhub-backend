@@ -1,7 +1,7 @@
-import asyncHandler from "../utils/asyncHandler.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import { ApiError } from "../utils/apiError.ts";
-import deleteFile from "../utils/deleteFile.ts";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import { ApiError } from "../utils/apiError.js";
+import deleteFile from "../utils/deleteFile.js";
 import {z} from "zod";
 
 export const categoryThumbnail = asyncHandler((req, res) => {

@@ -1,9 +1,9 @@
 import express from "express";
-import { getDashboardStats } from "../controllers/stats.controllers.ts";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
-import { ApiError } from "../utils/apiError.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import { prisma } from "../db/db.ts";
+import { getDashboardStats } from "../controllers/stats.controllers.js";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { ApiError } from "../utils/apiError.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import { prisma } from "../db/db.js";
 
 const router = express.Router();
 

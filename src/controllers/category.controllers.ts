@@ -1,9 +1,9 @@
-import asyncHandler from "../utils/asyncHandler.ts";
-import { ApiError } from "../utils/apiError.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import { prisma } from "../db/db.ts";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiError } from "../utils/apiError.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import { prisma } from "../db/db.js";
 import { z } from "zod";
-import deleteFile from "../utils/deleteFile.ts";
+import deleteFile from "../utils/deleteFile.js";
 
 const CreateCategorySchema = z.object({
     name_en: z.string().min(3, "Category name must be at least 3 characters long"),

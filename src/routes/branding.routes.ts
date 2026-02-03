@@ -1,6 +1,6 @@
 import express from "express";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
-import { deleteBrandingLogo, getBranding, updateBranding, updateBrandingLogo } from "../controllers/branding.controllers.ts";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { deleteBrandingLogo, getBranding, updateBranding, updateBrandingLogo } from "../controllers/branding.controllers.js";
 
 const router = express.Router();
 

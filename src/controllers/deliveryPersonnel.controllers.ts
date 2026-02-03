@@ -1,8 +1,8 @@
 import {z} from "zod";
-import asyncHandler from "../utils/asyncHandler.ts";
-import { ApiError } from "../utils/apiError.ts";
-import { prisma } from "../db/db.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiError } from "../utils/apiError.js";
+import { prisma } from "../db/db.js";
+import { ApiResponse } from "../utils/apiResponse.js";
 
 
 const AddDeliveryPersonnelSchema = z.object({

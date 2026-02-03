@@ -1,8 +1,8 @@
 import {z} from "zod";
-import { prisma } from "../db/db.ts";
-import { ApiError } from "../utils/apiError";
-import { ApiResponse } from "../utils/apiResponse";
-import asyncHandler from "../utils/asyncHandler.ts";
+import { prisma } from "../db/db.js";
+import { ApiError } from "../utils/apiError.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import asyncHandler from "../utils/asyncHandler.js";
 
 export const getCustomers = asyncHandler(async (req, res) => {
     const id = (req as any).user.id;

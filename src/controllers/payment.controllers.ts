@@ -1,11 +1,11 @@
-import { prisma } from "../db/db.ts";
+import { prisma } from "../db/db.js";
 import {
     createFlexPayPayment,
     verifyFlexPayPayment,
-} from "../services/flexpay.service.ts";
-import { ApiError } from "../utils/apiError.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import asyncHandler from "../utils/asyncHandler.ts";
+} from "../services/flexpay.service.js";  
+import { ApiError } from "../utils/apiError.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import asyncHandler from "../utils/asyncHandler.js";
 import {z} from "zod";
 
 const InitiatePaymentSchema = z.object({

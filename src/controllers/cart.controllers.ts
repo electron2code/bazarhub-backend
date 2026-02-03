@@ -1,8 +1,7 @@
-import asyncHandler from "../utils/asyncHandler.ts";
-import { prisma } from "../db/db.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import { ApiError } from "../utils/apiError.ts";
-import type { Cart } from "../../generated/prisma/browser.ts";
+import asyncHandler from "../utils/asyncHandler.js";
+import { prisma } from "../db/db.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import { ApiError } from "../utils/apiError.js";
 
 export const addToCart = asyncHandler(async (req, res) => {
     const { productId, quantity } = req.body;
@@ -22,7 +21,7 @@ export const addToCart = asyncHandler(async (req, res) => {
         },
     });
 
-    let cart: Cart | null = null;
+    let cart: any | null = null;
     if (!existCart) {
         cart = await prisma.cart.create({
             data: {

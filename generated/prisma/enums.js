@@ -56,4 +56,3 @@ export const EmployeeRole = {
     CONTENT: 'CONTENT',
     WAREHOUSE: 'WAREHOUSE'
 };
-//# sourceMappingURL=enums.js.map

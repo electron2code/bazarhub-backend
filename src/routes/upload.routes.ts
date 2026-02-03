@@ -1,9 +1,9 @@
 import express from "express";
-import upload from "../middlewares/multer.middleware.ts";
-import { categoryThumbnail, productThumbnail, deleteProductThumbnail, createBrandingLogo, createBannerImage, deleteBannerImage } from "../controllers/upload.controllers.ts";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
-import { ApiError } from "../utils/apiError.ts";
-import { prisma } from "../db/db.ts";
+import upload from "../middlewares/multer.middleware.js";
+import { categoryThumbnail, productThumbnail, deleteProductThumbnail, createBrandingLogo, createBannerImage, deleteBannerImage } from "../controllers/upload.controllers.js";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { ApiError } from "../utils/apiError.js";
+import { prisma } from "../db/db.js";
 
 const router = express.Router();
 

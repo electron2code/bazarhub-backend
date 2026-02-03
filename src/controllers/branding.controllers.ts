@@ -1,9 +1,9 @@
 import {z} from "zod";
-import { prisma } from "../db/db.ts";
-import { ApiError } from "../utils/apiError.ts";
-import asyncHandler from "../utils/asyncHandler.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import deleteFile from "../utils/deleteFile.ts";
+import { prisma } from "../db/db.js";
+import { ApiError } from "../utils/apiError.js";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import deleteFile from "../utils/deleteFile.js";
 
 const UpdateBrandingSchema = z.object({
     brandName: z.string(),

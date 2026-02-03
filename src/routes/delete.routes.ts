@@ -1,6 +1,6 @@
 import express from "express";
-import { deleteCategoryThumbnail } from "../controllers/delete.controllers.ts";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
+import { deleteCategoryThumbnail } from "../controllers/delete.controllers.js";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 

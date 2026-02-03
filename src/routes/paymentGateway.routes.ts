@@ -1,6 +1,6 @@
 import express from "express";
-import { addPaymentGateway, deletePaymentGateway, getPaymetGateways, getPaymetGatewaysClient, updatePaymetGateway } from "../controllers/paymentGateway.controllers.ts";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
+import { addPaymentGateway, deletePaymentGateway, getPaymetGateways, getPaymetGatewaysClient, updatePaymetGateway } from "../controllers/paymentGateway.controllers.js";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
 
 const router = express.Router();
 

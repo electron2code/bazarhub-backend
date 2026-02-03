@@ -360,4 +360,3 @@ export const DeliveryPersonnelOrderByRelevanceFieldEnum = {
     email: 'email'
 };
 export const defineExtension = runtime.Extensions.defineExtension;
-//# sourceMappingURL=prismaNamespace.js.map

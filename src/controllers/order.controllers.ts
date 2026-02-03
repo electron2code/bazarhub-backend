@@ -1,9 +1,9 @@
-import asyncHandler from "../utils/asyncHandler.ts";
-import { ApiError } from "../utils/apiError.ts";
-import { prisma } from "../db/db.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiError } from "../utils/apiError.js";
+import { prisma } from "../db/db.js";
+import { ApiResponse } from "../utils/apiResponse.js";
 import {z} from "zod";
-import type { OrderStatus } from "../../generated/prisma/enums.ts";
+import type { OrderStatus } from "../../generated/prisma/enums.d.ts";
 
 const addressSchema = z.object({
     fullName: z.string().min(3, "Full name is required"),

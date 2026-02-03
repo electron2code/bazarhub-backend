@@ -331,4 +331,3 @@ export const DeliveryPersonnelOrderByRelevanceFieldEnum = {
     phoneNumber: 'phoneNumber',
     email: 'email'
 };
-//# sourceMappingURL=prismaNamespaceBrowser.js.map

@@ -1,6 +1,6 @@
-import { prisma } from "../db/db.ts";
-import asyncHandler from "../utils/asyncHandler.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
+import { prisma } from "../db/db.js";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/apiResponse.js";
 
 export const getDashboardStats = asyncHandler(async (req, res) => {
     const totalBanners = await prisma.banner.count();

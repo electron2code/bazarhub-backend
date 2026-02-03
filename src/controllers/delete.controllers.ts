@@ -1,10 +1,10 @@
-import asyncHandler from "../utils/asyncHandler.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import { ApiError } from "../utils/apiError.ts";
+import asyncHandler from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import { ApiError } from "../utils/apiError.js";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { prisma } from "../db/db.ts";
+import { prisma } from "../db/db.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);

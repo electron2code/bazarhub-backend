@@ -1,6 +1,6 @@
 import axios from "axios";
-import { prisma } from "../db/db.ts";
-import { ApiError } from "../utils/apiError.ts";
+import { prisma } from "../db/db.js";
+import { ApiError } from "../utils/apiError.js";
 
 const FLEXPAY_BASE_URL = "https://pay.flexpaybd.com/api/payment";
 

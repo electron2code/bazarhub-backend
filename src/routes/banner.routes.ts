@@ -1,6 +1,6 @@
 import express from "express";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
-import { createBanner, deleteBanner, getBanners, updateBanner } from "../controllers/banner.controllers.ts";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { createBanner, deleteBanner, getBanners, updateBanner } from "../controllers/banner.controllers.js";
 
 const router = express.Router();
 

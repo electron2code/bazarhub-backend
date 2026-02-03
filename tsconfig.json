@@ -1,32 +1,20 @@
 {
   "compilerOptions": {
-    /* Build Output */
-    "rootDir": "./src",
+    "rootDir": "./",
     "outDir": "./dist",
-    "noEmit": false,                           // MUST BE FALSE to generate files
-    "sourceMap": true,
-    "declaration": true,
-
-    /* Environment Settings */
-    "module": "NodeNext",                      // Standard for modern Node.js
+    "noEmit": false,
+    "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "target": "ES2022",
-    "strict": true,
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "allowImportingTsExtensions": true,
-
-    /* Remove/Disable problematic Frontend settings */
-    "verbatimModuleSyntax": false,             // Simplifies imports for Node
+    
+    /* Change this: Using .ts extensions in imports is generally discouraged 
+       for standard NodeNext builds unless using a specialized runtime. */
+    "allowImportingTsExtensions": false, 
+    
     "isolatedModules": true,
-    "moduleDetection": "force"
+    "esModuleInterop": true,
+    "skipLibCheck": true
   },
-  "include": ["src/**/*"],                     // Only look at code in src
-  "exclude": [
-    "node_modules", 
-    "dist", 
-    "prisma.config.ts",                        // Explicitly ignore this config
-    "**/*.test.ts"                             // Ignore tests in build
-  ]
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist", "**/*.test.ts"]
 }

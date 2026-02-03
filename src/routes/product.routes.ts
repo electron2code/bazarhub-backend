@@ -1,8 +1,8 @@
 import express from "express";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
-import { createProduct, getProducts, deleteProduct, updateProduct } from "../controllers/product.controllers.ts";
-import { prisma } from "../db/db.ts";
-import { ApiError } from "../utils/apiError.ts";
+import { authMiddleware } from "../middlewares/auth.middleware.js";
+import { createProduct, getProducts, deleteProduct, updateProduct } from "../controllers/product.controllers.js";
+import { prisma } from "../db/db.js";
+import { ApiError } from "../utils/apiError.js";
 
 const router = express.Router();
 

@@ -1,24 +1,24 @@
 import express from "express";
 import cors from "cors";
-import authRoutes from "./routes/auth.routes.ts";
-import uploadRoutes from "./routes/upload.routes.ts";
-import deleteRoutes from "./routes/delete.routes.ts";
-import categoryRoutes from "./routes/category.routes.ts";
-import productRoutes from "./routes/product.routes.ts";
-import statsRoutes from "./routes/stats.routes.ts";
-import cartRoutes from "./routes/cart.routes.ts";
-import orderRoutes from "./routes/order.routes.ts";
-import paymentRoutes from "./routes/payment.routes.ts";
-import paymentGatewayRoutes from "./routes/paymentGateway.routes.ts";
+import authRoutes from "./routes/auth.routes.js";
+import uploadRoutes from "./routes/upload.routes.js";
+import deleteRoutes from "./routes/delete.routes.js";
+import categoryRoutes from "./routes/category.routes.js";
+import productRoutes from "./routes/product.routes.js";
+import statsRoutes from "./routes/stats.routes.js";
+import cartRoutes from "./routes/cart.routes.js";
+import orderRoutes from "./routes/order.routes.js";
+import paymentRoutes from "./routes/payment.routes.js";
+import paymentGatewayRoutes from "./routes/paymentGateway.routes.js";
 
-import customerRoutes from "./routes/customers.routes.ts";
-import employeeRoutes from "./routes/employee.routes.ts";
-import deliveryPersonnelRoutes from "./routes/deliveryPersonnel.routes.ts"
+import customerRoutes from "./routes/customers.routes.js";
+import employeeRoutes from "./routes/employee.routes.js";
+import deliveryPersonnelRoutes from "./routes/deliveryPersonnel.routes.js"
 
-import brandingRoutes from "./routes/branding.routes.ts";
-import bannerRoutes from "./routes/banner.routes.ts";
+import brandingRoutes from "./routes/branding.routes.js";
+import bannerRoutes from "./routes/banner.routes.js";
 
-import { errorHandler } from "./middlewares/error.middleware.ts";
+import { errorHandler } from "./middlewares/error.middleware.js";
 import cookieParser from "cookie-parser";
 
 import path from 'path';

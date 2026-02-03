@@ -1,9 +1,9 @@
-import { prisma } from "../db/db.ts";
-import { ApiError } from "../utils/apiError.ts";
-import { ApiResponse } from "../utils/apiResponse.ts";
-import asyncHandler from "../utils/asyncHandler.ts";
+import { prisma } from "../db/db.js";
+import { ApiError } from "../utils/apiError.js";
+import { ApiResponse } from "../utils/apiResponse.js";
+import asyncHandler from "../utils/asyncHandler.js";
 import { z } from "zod";
-import deleteFile from "../utils/deleteFile.ts";
+import deleteFile from "../utils/deleteFile.js";
 
 const CreateProductSchema = z.object({
     name_en: z.string().min(3, "Name must be at least 3 characters long"),

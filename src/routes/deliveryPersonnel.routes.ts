@@ -1,6 +1,6 @@
 import express from "express";
-import { authMiddleware } from "../middlewares/auth.middleware.ts";
-import { addDeliveryPersonnel, deleteDeliveryPersonnel, getDeliveryPersonnels, updateDeliveryPersonnel } from "../controllers/deliveryPersonnel.controllers.ts";
+import { authMiddleware } from "../middlewares/auth.middleware.js";     
+import { addDeliveryPersonnel, deleteDeliveryPersonnel, getDeliveryPersonnels, updateDeliveryPersonnel } from "../controllers/deliveryPersonnel.controllers.js";
 
 const router = express.Router();
 
