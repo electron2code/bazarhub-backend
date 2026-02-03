@@ -1,0 +1,13 @@
+import express from "express";
+import { addPaymentGateway, deletePaymentGateway, getPaymetGateways, getPaymetGatewaysClient, updatePaymetGateway } from "../controllers/paymentGateway.controllers.ts";
+import { authMiddleware } from "../middlewares/auth.middleware.ts";
+
+const router = express.Router();
+
+router.route("/add-gateway").post(authMiddleware, addPaymentGateway);
+router.route("/update-gateway").put(authMiddleware, updatePaymetGateway);
+router.route("/delete-gateway").delete(authMiddleware, deletePaymentGateway);
+router.route("/").get(authMiddleware, getPaymetGateways);
+router.route("/client").get(authMiddleware, getPaymetGatewaysClient);
+
+export default router;

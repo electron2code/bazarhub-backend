@@ -1,0 +1,325 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  id                      String    @id @default(uuid())
+  name                    String?
+  email                   String    @unique
+  password                String
+  provider                Provider  @default(LOCAL)
+  googleId                String?
+  isEmailVerified         Boolean   @default(false)
+  emailVerificationToken  String?
+  emailVerificationExpiry DateTime?
+  role                    Role      @default(USER)
+  type                    Type      @default(RETAIL)
+
+  refreshToken       String?
+  refreshTokenExpiry DateTime?
+  createdAt          DateTime  @default(now())
+
+  // Relations
+  cart     Cart? // One active cart per user
+  orders   Order[] // Order history
+  products Product[] // Products created by the user
+  employment Employee?
+}
+
+enum Role {
+  ADMIN
+  USER
+}
+
+enum Provider {
+  LOCAL
+  GOOGLE
+}
+
+enum Type {
+  RETAIL
+  WHOLESALE
+}
+
+// 1. Enums help manage state strictly
+enum ProductStatus {
+  DRAFT
+  ACTIVE
+  ARCHIVED
+}
+
+enum OrderStatus {
+  PENDING
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  COMPLETED
+  CANCELLED
+  RETURNED
+  REFUNDED
+  PENDING_REFUND
+  COMPLETED_REFUND
+  CANCELLED_REFUND
+  RETURNED_REFUND
+  REFUNDED_REFUND
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum Visibility {
+  RETAIL
+  WHOLESALE
+  BOTH
+}
+
+model Product {
+  id String @id @default(uuid())
+
+  // Basic Info
+  name_en        String
+  name_bn        String?
+  description_en String  @db.Text // Use Text type for long descriptions
+  description_bn String? @db.Text
+
+  // SEO & Access
+  slug String? @unique
+
+  // Business Logic
+  sku             String?
+  retailPrice     Decimal        @default(0.0) @db.Decimal(10, 2) // Always use Decimal for money
+  wholesalePrice  Decimal?       @db.Decimal(10, 2)
+  stock           Int            @default(0)
+  minWholesaleQty Int            @default(0)
+  status          ProductStatus  @default(DRAFT)
+  isFeatured      Boolean        @default(false)
+  type            Type?
+  // Relations
+  categoryId      String?
+  category        Category?      @relation(fields: [categoryId], references: [id])
+  images          ProductImage[]
+  visibility      Visibility     @default(BOTH)
+  isActive        Boolean        @default(true)
+  isInhouse       Boolean        @default(false)
+  sellerId        String?
+  seller          User?          @relation(fields: [sellerId], references: [id], onDelete: SetNull)
+
+  orders    OrderItem[]
+  cartItems CartItem[]
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Indexing for performance
+  @@index([categoryId])
+  @@index([status])
+}
+
+model ProductImage {
+  id        String  @id @default(uuid())
+  url       String
+  productId String
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id String @id @default(uuid())
+
+  // Info
+  name_en     String
+  name_bn     String?
+  slug        String  @unique
+  description String? @db.Text
+  imageUrl    String? // Category thumbnail
+
+  // Hierarchy (Adjacency List Pattern)
+  parentCategoryId String?
+  parentCategory   Category?  @relation("CategoryHierarchy", fields: [parentCategoryId], references: [id], onDelete: SetNull)
+  childCategories  Category[] @relation("CategoryHierarchy")
+
+  // Relations
+  products Product[]
+
+  // Settings
+  sortOrder Int     @default(0)
+  isActive  Boolean @default(true)
+
+  // Metadata
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([parentCategoryId])
+}
+
+// --- Cart System ---
+model Cart {
+  id String @id @default(uuid())
+
+  // Can be null if you support "Guest Checkout" (tracked by session/cookie)
+  userId String? @unique
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  items CartItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CartItem {
+  id String @id @default(uuid())
+
+  cartId String
+  cart   Cart   @relation(fields: [cartId], references: [id], onDelete: Cascade)
+
+  image           String
+  productId       String
+  product         Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+  name            String
+  minWholesaleQty Int
+  retailPrice     Decimal @db.Decimal(10, 2)
+  wholesalePrice  Decimal @db.Decimal(10, 2)
+  quantity        Int     @default(1)
+  buyerType       Type
+
+  // Unique constraint ensures a product appears only once per cart
+  @@unique([cartId, productId])
+}
+
+// --- Order System ---
+model Order {
+  id          String @id @default(uuid())
+  orderNumber String @unique // Readable ID like "ORD-2023-1001"
+
+  userId String? // Nullable if user is deleted, but order record remains
+  user   User?   @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  items OrderItem[]
+
+  // Financials
+  totalAmount Decimal @db.Decimal(10, 2)
+
+  // State Management
+  status        OrderStatus   @default(PENDING)
+  paymentStatus PaymentStatus @default(PENDING)
+
+  // Shipping Details (Ideally linked to an Address model, strictly embedded here for simplicity)
+  shippingAddress ShippingAddress?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model OrderItem {
+  id String @id @default(uuid())
+
+  orderId String
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+
+  productId String // Nullable: If product is deleted, we still keep the order history
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  // --- SNAPSHOT FIELDS ---
+  // We copy these from Product at the moment of purchase. 
+  // If Product price changes later, this record must remain unchanged.
+  name     String
+  price    Decimal @db.Decimal(10, 2)
+  quantity Int
+  sku      String?
+}
+
+model ShippingAddress {
+  id String @id @default(uuid())
+  address String
+  city String
+  postalCode String
+  phone String
+  fullName String
+
+  orderId String @unique
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+}
+
+model BrandLogo {
+  id String @id @default(uuid())
+  url String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Branding {
+  id String @id @default(uuid())
+  brandName String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Banner {
+  id String @id @default(uuid())
+  title String
+  imageUrl String
+  linkUrl String?
+  position String
+  sortOrder Int @default(0)
+  isActive Boolean @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PaymentGateway {
+  id String @id @default(uuid())
+  gateway_id String
+  name String @unique
+  description String?
+  icon String
+  is_enabled Boolean
+  is_configured Boolean
+  config PaymentGatewayConfig?
+}
+
+model PaymentGatewayConfig {
+  api_key String
+  paymentGatewayId String @unique
+  paymentGateway PaymentGateway @relation(fields: [paymentGatewayId], references: [id], onDelete: Cascade)
+}
+
+enum EmployeeRole {
+  MANAGER
+  SUPPORT
+  CONTENT
+  WAREHOUSE
+}
+
+model Employee {
+  id String @id @default(cuid())
+  userId String @unique
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role EmployeeRole @default(CONTENT)
+  department String
+  isActive Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DeliveryPersonnel {
+  id String @id @default(uuid())
+  name String
+  phoneNumber String
+  email String
+  isActive Boolean @default(false)
+}

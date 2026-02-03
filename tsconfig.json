@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    /* Build Output */
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "noEmit": false,                           // MUST BE FALSE to generate files
+    "sourceMap": true,
+    "declaration": true,
+
+    /* Environment Settings */
+    "module": "NodeNext",                      // Standard for modern Node.js
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowImportingTsExtensions": true,
+
+    /* Remove/Disable problematic Frontend settings */
+    "verbatimModuleSyntax": false,             // Simplifies imports for Node
+    "isolatedModules": true,
+    "moduleDetection": "force"
+  },
+  "include": ["src/**/*"],                     // Only look at code in src
+  "exclude": [
+    "node_modules", 
+    "dist", 
+    "prisma.config.ts",                        // Explicitly ignore this config
+    "**/*.test.ts"                             // Ignore tests in build
+  ]
+}
