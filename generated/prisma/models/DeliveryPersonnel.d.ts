@@ -1,0 +1,890 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.ts";
+/**
+ * Model DeliveryPersonnel
+ *
+ */
+export type DeliveryPersonnelModel = runtime.Types.Result.DefaultSelection<Prisma.$DeliveryPersonnelPayload>;
+export type AggregateDeliveryPersonnel = {
+    _count: DeliveryPersonnelCountAggregateOutputType | null;
+    _min: DeliveryPersonnelMinAggregateOutputType | null;
+    _max: DeliveryPersonnelMaxAggregateOutputType | null;
+};
+export type DeliveryPersonnelMinAggregateOutputType = {
+    id: string | null;
+    name: string | null;
+    phoneNumber: string | null;
+    email: string | null;
+    isActive: boolean | null;
+};
+export type DeliveryPersonnelMaxAggregateOutputType = {
+    id: string | null;
+    name: string | null;
+    phoneNumber: string | null;
+    email: string | null;
+    isActive: boolean | null;
+};
+export type DeliveryPersonnelCountAggregateOutputType = {
+    id: number;
+    name: number;
+    phoneNumber: number;
+    email: number;
+    isActive: number;
+    _all: number;
+};
+export type DeliveryPersonnelMinAggregateInputType = {
+    id?: true;
+    name?: true;
+    phoneNumber?: true;
+    email?: true;
+    isActive?: true;
+};
+export type DeliveryPersonnelMaxAggregateInputType = {
+    id?: true;
+    name?: true;
+    phoneNumber?: true;
+    email?: true;
+    isActive?: true;
+};
+export type DeliveryPersonnelCountAggregateInputType = {
+    id?: true;
+    name?: true;
+    phoneNumber?: true;
+    email?: true;
+    isActive?: true;
+    _all?: true;
+};
+export type DeliveryPersonnelAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeliveryPersonnel to aggregate.
+     */
+    where?: Prisma.DeliveryPersonnelWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DeliveryPersonnels to fetch.
+     */
+    orderBy?: Prisma.DeliveryPersonnelOrderByWithRelationInput | Prisma.DeliveryPersonnelOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.DeliveryPersonnelWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DeliveryPersonnels from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DeliveryPersonnels.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned DeliveryPersonnels
+    **/
+    _count?: true | DeliveryPersonnelCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: DeliveryPersonnelMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: DeliveryPersonnelMaxAggregateInputType;
+};
+export type GetDeliveryPersonnelAggregateType<T extends DeliveryPersonnelAggregateArgs> = {
+    [P in keyof T & keyof AggregateDeliveryPersonnel]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateDeliveryPersonnel[P]> : Prisma.GetScalarType<T[P], AggregateDeliveryPersonnel[P]>;
+};
+export type DeliveryPersonnelGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.DeliveryPersonnelWhereInput;
+    orderBy?: Prisma.DeliveryPersonnelOrderByWithAggregationInput | Prisma.DeliveryPersonnelOrderByWithAggregationInput[];
+    by: Prisma.DeliveryPersonnelScalarFieldEnum[] | Prisma.DeliveryPersonnelScalarFieldEnum;
+    having?: Prisma.DeliveryPersonnelScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: DeliveryPersonnelCountAggregateInputType | true;
+    _min?: DeliveryPersonnelMinAggregateInputType;
+    _max?: DeliveryPersonnelMaxAggregateInputType;
+};
+export type DeliveryPersonnelGroupByOutputType = {
+    id: string;
+    name: string;
+    phoneNumber: string;
+    email: string;
+    isActive: boolean;
+    _count: DeliveryPersonnelCountAggregateOutputType | null;
+    _min: DeliveryPersonnelMinAggregateOutputType | null;
+    _max: DeliveryPersonnelMaxAggregateOutputType | null;
+};
+type GetDeliveryPersonnelGroupByPayload<T extends DeliveryPersonnelGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<DeliveryPersonnelGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof DeliveryPersonnelGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], DeliveryPersonnelGroupByOutputType[P]> : Prisma.GetScalarType<T[P], DeliveryPersonnelGroupByOutputType[P]>;
+}>>;
+export type DeliveryPersonnelWhereInput = {
+    AND?: Prisma.DeliveryPersonnelWhereInput | Prisma.DeliveryPersonnelWhereInput[];
+    OR?: Prisma.DeliveryPersonnelWhereInput[];
+    NOT?: Prisma.DeliveryPersonnelWhereInput | Prisma.DeliveryPersonnelWhereInput[];
+    id?: Prisma.StringFilter<"DeliveryPersonnel"> | string;
+    name?: Prisma.StringFilter<"DeliveryPersonnel"> | string;
+    phoneNumber?: Prisma.StringFilter<"DeliveryPersonnel"> | string;
+    email?: Prisma.StringFilter<"DeliveryPersonnel"> | string;
+    isActive?: Prisma.BoolFilter<"DeliveryPersonnel"> | boolean;
+};
+export type DeliveryPersonnelOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    phoneNumber?: Prisma.SortOrder;
+    email?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    _relevance?: Prisma.DeliveryPersonnelOrderByRelevanceInput;
+};
+export type DeliveryPersonnelWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.DeliveryPersonnelWhereInput | Prisma.DeliveryPersonnelWhereInput[];
+    OR?: Prisma.DeliveryPersonnelWhereInput[];
+    NOT?: Prisma.DeliveryPersonnelWhereInput | Prisma.DeliveryPersonnelWhereInput[];
+    name?: Prisma.StringFilter<"DeliveryPersonnel"> | string;
+    phoneNumber?: Prisma.StringFilter<"DeliveryPersonnel"> | string;
+    email?: Prisma.StringFilter<"DeliveryPersonnel"> | string;
+    isActive?: Prisma.BoolFilter<"DeliveryPersonnel"> | boolean;
+}, "id">;
+export type DeliveryPersonnelOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    phoneNumber?: Prisma.SortOrder;
+    email?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+    _count?: Prisma.DeliveryPersonnelCountOrderByAggregateInput;
+    _max?: Prisma.DeliveryPersonnelMaxOrderByAggregateInput;
+    _min?: Prisma.DeliveryPersonnelMinOrderByAggregateInput;
+};
+export type DeliveryPersonnelScalarWhereWithAggregatesInput = {
+    AND?: Prisma.DeliveryPersonnelScalarWhereWithAggregatesInput | Prisma.DeliveryPersonnelScalarWhereWithAggregatesInput[];
+    OR?: Prisma.DeliveryPersonnelScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.DeliveryPersonnelScalarWhereWithAggregatesInput | Prisma.DeliveryPersonnelScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"DeliveryPersonnel"> | string;
+    name?: Prisma.StringWithAggregatesFilter<"DeliveryPersonnel"> | string;
+    phoneNumber?: Prisma.StringWithAggregatesFilter<"DeliveryPersonnel"> | string;
+    email?: Prisma.StringWithAggregatesFilter<"DeliveryPersonnel"> | string;
+    isActive?: Prisma.BoolWithAggregatesFilter<"DeliveryPersonnel"> | boolean;
+};
+export type DeliveryPersonnelCreateInput = {
+    id?: string;
+    name: string;
+    phoneNumber: string;
+    email: string;
+    isActive?: boolean;
+};
+export type DeliveryPersonnelUncheckedCreateInput = {
+    id?: string;
+    name: string;
+    phoneNumber: string;
+    email: string;
+    isActive?: boolean;
+};
+export type DeliveryPersonnelUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+};
+export type DeliveryPersonnelUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+};
+export type DeliveryPersonnelCreateManyInput = {
+    id?: string;
+    name: string;
+    phoneNumber: string;
+    email: string;
+    isActive?: boolean;
+};
+export type DeliveryPersonnelUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+};
+export type DeliveryPersonnelUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    name?: Prisma.StringFieldUpdateOperationsInput | string;
+    phoneNumber?: Prisma.StringFieldUpdateOperationsInput | string;
+    email?: Prisma.StringFieldUpdateOperationsInput | string;
+    isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean;
+};
+export type DeliveryPersonnelOrderByRelevanceInput = {
+    fields: Prisma.DeliveryPersonnelOrderByRelevanceFieldEnum | Prisma.DeliveryPersonnelOrderByRelevanceFieldEnum[];
+    sort: Prisma.SortOrder;
+    search: string;
+};
+export type DeliveryPersonnelCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    phoneNumber?: Prisma.SortOrder;
+    email?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+};
+export type DeliveryPersonnelMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    phoneNumber?: Prisma.SortOrder;
+    email?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+};
+export type DeliveryPersonnelMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    name?: Prisma.SortOrder;
+    phoneNumber?: Prisma.SortOrder;
+    email?: Prisma.SortOrder;
+    isActive?: Prisma.SortOrder;
+};
+export type DeliveryPersonnelSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    name?: boolean;
+    phoneNumber?: boolean;
+    email?: boolean;
+    isActive?: boolean;
+}, ExtArgs["result"]["deliveryPersonnel"]>;
+export type DeliveryPersonnelSelectScalar = {
+    id?: boolean;
+    name?: boolean;
+    phoneNumber?: boolean;
+    email?: boolean;
+    isActive?: boolean;
+};
+export type DeliveryPersonnelOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "phoneNumber" | "email" | "isActive", ExtArgs["result"]["deliveryPersonnel"]>;
+export type $DeliveryPersonnelPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "DeliveryPersonnel";
+    objects: {};
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        name: string;
+        phoneNumber: string;
+        email: string;
+        isActive: boolean;
+    }, ExtArgs["result"]["deliveryPersonnel"]>;
+    composites: {};
+};
+export type DeliveryPersonnelGetPayload<S extends boolean | null | undefined | DeliveryPersonnelDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload, S>;
+export type DeliveryPersonnelCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<DeliveryPersonnelFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: DeliveryPersonnelCountAggregateInputType | true;
+};
+export interface DeliveryPersonnelDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['DeliveryPersonnel'];
+        meta: {
+            name: 'DeliveryPersonnel';
+        };
+    };
+    /**
+     * Find zero or one DeliveryPersonnel that matches the filter.
+     * @param {DeliveryPersonnelFindUniqueArgs} args - Arguments to find a DeliveryPersonnel
+     * @example
+     * // Get one DeliveryPersonnel
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DeliveryPersonnelFindUniqueArgs>(args: Prisma.SelectSubset<T, DeliveryPersonnelFindUniqueArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one DeliveryPersonnel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DeliveryPersonnelFindUniqueOrThrowArgs} args - Arguments to find a DeliveryPersonnel
+     * @example
+     * // Get one DeliveryPersonnel
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DeliveryPersonnelFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, DeliveryPersonnelFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first DeliveryPersonnel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPersonnelFindFirstArgs} args - Arguments to find a DeliveryPersonnel
+     * @example
+     * // Get one DeliveryPersonnel
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DeliveryPersonnelFindFirstArgs>(args?: Prisma.SelectSubset<T, DeliveryPersonnelFindFirstArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first DeliveryPersonnel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPersonnelFindFirstOrThrowArgs} args - Arguments to find a DeliveryPersonnel
+     * @example
+     * // Get one DeliveryPersonnel
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DeliveryPersonnelFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, DeliveryPersonnelFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more DeliveryPersonnels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPersonnelFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DeliveryPersonnels
+     * const deliveryPersonnels = await prisma.deliveryPersonnel.findMany()
+     *
+     * // Get first 10 DeliveryPersonnels
+     * const deliveryPersonnels = await prisma.deliveryPersonnel.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const deliveryPersonnelWithIdOnly = await prisma.deliveryPersonnel.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends DeliveryPersonnelFindManyArgs>(args?: Prisma.SelectSubset<T, DeliveryPersonnelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a DeliveryPersonnel.
+     * @param {DeliveryPersonnelCreateArgs} args - Arguments to create a DeliveryPersonnel.
+     * @example
+     * // Create one DeliveryPersonnel
+     * const DeliveryPersonnel = await prisma.deliveryPersonnel.create({
+     *   data: {
+     *     // ... data to create a DeliveryPersonnel
+     *   }
+     * })
+     *
+     */
+    create<T extends DeliveryPersonnelCreateArgs>(args: Prisma.SelectSubset<T, DeliveryPersonnelCreateArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many DeliveryPersonnels.
+     * @param {DeliveryPersonnelCreateManyArgs} args - Arguments to create many DeliveryPersonnels.
+     * @example
+     * // Create many DeliveryPersonnels
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends DeliveryPersonnelCreateManyArgs>(args?: Prisma.SelectSubset<T, DeliveryPersonnelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Delete a DeliveryPersonnel.
+     * @param {DeliveryPersonnelDeleteArgs} args - Arguments to delete one DeliveryPersonnel.
+     * @example
+     * // Delete one DeliveryPersonnel
+     * const DeliveryPersonnel = await prisma.deliveryPersonnel.delete({
+     *   where: {
+     *     // ... filter to delete one DeliveryPersonnel
+     *   }
+     * })
+     *
+     */
+    delete<T extends DeliveryPersonnelDeleteArgs>(args: Prisma.SelectSubset<T, DeliveryPersonnelDeleteArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one DeliveryPersonnel.
+     * @param {DeliveryPersonnelUpdateArgs} args - Arguments to update one DeliveryPersonnel.
+     * @example
+     * // Update one DeliveryPersonnel
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends DeliveryPersonnelUpdateArgs>(args: Prisma.SelectSubset<T, DeliveryPersonnelUpdateArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more DeliveryPersonnels.
+     * @param {DeliveryPersonnelDeleteManyArgs} args - Arguments to filter DeliveryPersonnels to delete.
+     * @example
+     * // Delete a few DeliveryPersonnels
+     * const { count } = await prisma.deliveryPersonnel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends DeliveryPersonnelDeleteManyArgs>(args?: Prisma.SelectSubset<T, DeliveryPersonnelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more DeliveryPersonnels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPersonnelUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DeliveryPersonnels
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends DeliveryPersonnelUpdateManyArgs>(args: Prisma.SelectSubset<T, DeliveryPersonnelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create or update one DeliveryPersonnel.
+     * @param {DeliveryPersonnelUpsertArgs} args - Arguments to update or create a DeliveryPersonnel.
+     * @example
+     * // Update or create a DeliveryPersonnel
+     * const deliveryPersonnel = await prisma.deliveryPersonnel.upsert({
+     *   create: {
+     *     // ... data to create a DeliveryPersonnel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DeliveryPersonnel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DeliveryPersonnelUpsertArgs>(args: Prisma.SelectSubset<T, DeliveryPersonnelUpsertArgs<ExtArgs>>): Prisma.Prisma__DeliveryPersonnelClient<runtime.Types.Result.GetResult<Prisma.$DeliveryPersonnelPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of DeliveryPersonnels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPersonnelCountArgs} args - Arguments to filter DeliveryPersonnels to count.
+     * @example
+     * // Count the number of DeliveryPersonnels
+     * const count = await prisma.deliveryPersonnel.count({
+     *   where: {
+     *     // ... the filter for the DeliveryPersonnels we want to count
+     *   }
+     * })
+    **/
+    count<T extends DeliveryPersonnelCountArgs>(args?: Prisma.Subset<T, DeliveryPersonnelCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], DeliveryPersonnelCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a DeliveryPersonnel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPersonnelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DeliveryPersonnelAggregateArgs>(args: Prisma.Subset<T, DeliveryPersonnelAggregateArgs>): Prisma.PrismaPromise<GetDeliveryPersonnelAggregateType<T>>;
+    /**
+     * Group by DeliveryPersonnel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPersonnelGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends DeliveryPersonnelGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: DeliveryPersonnelGroupByArgs['orderBy'];
+    } : {
+        orderBy?: DeliveryPersonnelGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, DeliveryPersonnelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeliveryPersonnelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the DeliveryPersonnel model
+     */
+    readonly fields: DeliveryPersonnelFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for DeliveryPersonnel.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__DeliveryPersonnelClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the DeliveryPersonnel model
+ */
+export interface DeliveryPersonnelFieldRefs {
+    readonly id: Prisma.FieldRef<"DeliveryPersonnel", 'String'>;
+    readonly name: Prisma.FieldRef<"DeliveryPersonnel", 'String'>;
+    readonly phoneNumber: Prisma.FieldRef<"DeliveryPersonnel", 'String'>;
+    readonly email: Prisma.FieldRef<"DeliveryPersonnel", 'String'>;
+    readonly isActive: Prisma.FieldRef<"DeliveryPersonnel", 'Boolean'>;
+}
+/**
+ * DeliveryPersonnel findUnique
+ */
+export type DeliveryPersonnelFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * Filter, which DeliveryPersonnel to fetch.
+     */
+    where: Prisma.DeliveryPersonnelWhereUniqueInput;
+};
+/**
+ * DeliveryPersonnel findUniqueOrThrow
+ */
+export type DeliveryPersonnelFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * Filter, which DeliveryPersonnel to fetch.
+     */
+    where: Prisma.DeliveryPersonnelWhereUniqueInput;
+};
+/**
+ * DeliveryPersonnel findFirst
+ */
+export type DeliveryPersonnelFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * Filter, which DeliveryPersonnel to fetch.
+     */
+    where?: Prisma.DeliveryPersonnelWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DeliveryPersonnels to fetch.
+     */
+    orderBy?: Prisma.DeliveryPersonnelOrderByWithRelationInput | Prisma.DeliveryPersonnelOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for DeliveryPersonnels.
+     */
+    cursor?: Prisma.DeliveryPersonnelWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DeliveryPersonnels from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DeliveryPersonnels.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of DeliveryPersonnels.
+     */
+    distinct?: Prisma.DeliveryPersonnelScalarFieldEnum | Prisma.DeliveryPersonnelScalarFieldEnum[];
+};
+/**
+ * DeliveryPersonnel findFirstOrThrow
+ */
+export type DeliveryPersonnelFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * Filter, which DeliveryPersonnel to fetch.
+     */
+    where?: Prisma.DeliveryPersonnelWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DeliveryPersonnels to fetch.
+     */
+    orderBy?: Prisma.DeliveryPersonnelOrderByWithRelationInput | Prisma.DeliveryPersonnelOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for DeliveryPersonnels.
+     */
+    cursor?: Prisma.DeliveryPersonnelWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DeliveryPersonnels from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DeliveryPersonnels.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of DeliveryPersonnels.
+     */
+    distinct?: Prisma.DeliveryPersonnelScalarFieldEnum | Prisma.DeliveryPersonnelScalarFieldEnum[];
+};
+/**
+ * DeliveryPersonnel findMany
+ */
+export type DeliveryPersonnelFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * Filter, which DeliveryPersonnels to fetch.
+     */
+    where?: Prisma.DeliveryPersonnelWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of DeliveryPersonnels to fetch.
+     */
+    orderBy?: Prisma.DeliveryPersonnelOrderByWithRelationInput | Prisma.DeliveryPersonnelOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing DeliveryPersonnels.
+     */
+    cursor?: Prisma.DeliveryPersonnelWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` DeliveryPersonnels from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` DeliveryPersonnels.
+     */
+    skip?: number;
+    distinct?: Prisma.DeliveryPersonnelScalarFieldEnum | Prisma.DeliveryPersonnelScalarFieldEnum[];
+};
+/**
+ * DeliveryPersonnel create
+ */
+export type DeliveryPersonnelCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * The data needed to create a DeliveryPersonnel.
+     */
+    data: Prisma.XOR<Prisma.DeliveryPersonnelCreateInput, Prisma.DeliveryPersonnelUncheckedCreateInput>;
+};
+/**
+ * DeliveryPersonnel createMany
+ */
+export type DeliveryPersonnelCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DeliveryPersonnels.
+     */
+    data: Prisma.DeliveryPersonnelCreateManyInput | Prisma.DeliveryPersonnelCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * DeliveryPersonnel update
+ */
+export type DeliveryPersonnelUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * The data needed to update a DeliveryPersonnel.
+     */
+    data: Prisma.XOR<Prisma.DeliveryPersonnelUpdateInput, Prisma.DeliveryPersonnelUncheckedUpdateInput>;
+    /**
+     * Choose, which DeliveryPersonnel to update.
+     */
+    where: Prisma.DeliveryPersonnelWhereUniqueInput;
+};
+/**
+ * DeliveryPersonnel updateMany
+ */
+export type DeliveryPersonnelUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DeliveryPersonnels.
+     */
+    data: Prisma.XOR<Prisma.DeliveryPersonnelUpdateManyMutationInput, Prisma.DeliveryPersonnelUncheckedUpdateManyInput>;
+    /**
+     * Filter which DeliveryPersonnels to update
+     */
+    where?: Prisma.DeliveryPersonnelWhereInput;
+    /**
+     * Limit how many DeliveryPersonnels to update.
+     */
+    limit?: number;
+};
+/**
+ * DeliveryPersonnel upsert
+ */
+export type DeliveryPersonnelUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * The filter to search for the DeliveryPersonnel to update in case it exists.
+     */
+    where: Prisma.DeliveryPersonnelWhereUniqueInput;
+    /**
+     * In case the DeliveryPersonnel found by the `where` argument doesn't exist, create a new DeliveryPersonnel with this data.
+     */
+    create: Prisma.XOR<Prisma.DeliveryPersonnelCreateInput, Prisma.DeliveryPersonnelUncheckedCreateInput>;
+    /**
+     * In case the DeliveryPersonnel was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.DeliveryPersonnelUpdateInput, Prisma.DeliveryPersonnelUncheckedUpdateInput>;
+};
+/**
+ * DeliveryPersonnel delete
+ */
+export type DeliveryPersonnelDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+    /**
+     * Filter which DeliveryPersonnel to delete.
+     */
+    where: Prisma.DeliveryPersonnelWhereUniqueInput;
+};
+/**
+ * DeliveryPersonnel deleteMany
+ */
+export type DeliveryPersonnelDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeliveryPersonnels to delete
+     */
+    where?: Prisma.DeliveryPersonnelWhereInput;
+    /**
+     * Limit how many DeliveryPersonnels to delete.
+     */
+    limit?: number;
+};
+/**
+ * DeliveryPersonnel without action
+ */
+export type DeliveryPersonnelDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPersonnel
+     */
+    select?: Prisma.DeliveryPersonnelSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the DeliveryPersonnel
+     */
+    omit?: Prisma.DeliveryPersonnelOmit<ExtArgs> | null;
+};
+export {};

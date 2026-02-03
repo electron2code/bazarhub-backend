@@ -1,0 +1,864 @@
+import type * as runtime from "@prisma/client/runtime/client";
+import type * as Prisma from "../internal/prismaNamespace.ts";
+/**
+ * Model BrandLogo
+ *
+ */
+export type BrandLogoModel = runtime.Types.Result.DefaultSelection<Prisma.$BrandLogoPayload>;
+export type AggregateBrandLogo = {
+    _count: BrandLogoCountAggregateOutputType | null;
+    _min: BrandLogoMinAggregateOutputType | null;
+    _max: BrandLogoMaxAggregateOutputType | null;
+};
+export type BrandLogoMinAggregateOutputType = {
+    id: string | null;
+    url: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type BrandLogoMaxAggregateOutputType = {
+    id: string | null;
+    url: string | null;
+    createdAt: Date | null;
+    updatedAt: Date | null;
+};
+export type BrandLogoCountAggregateOutputType = {
+    id: number;
+    url: number;
+    createdAt: number;
+    updatedAt: number;
+    _all: number;
+};
+export type BrandLogoMinAggregateInputType = {
+    id?: true;
+    url?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type BrandLogoMaxAggregateInputType = {
+    id?: true;
+    url?: true;
+    createdAt?: true;
+    updatedAt?: true;
+};
+export type BrandLogoCountAggregateInputType = {
+    id?: true;
+    url?: true;
+    createdAt?: true;
+    updatedAt?: true;
+    _all?: true;
+};
+export type BrandLogoAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which BrandLogo to aggregate.
+     */
+    where?: Prisma.BrandLogoWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BrandLogos to fetch.
+     */
+    orderBy?: Prisma.BrandLogoOrderByWithRelationInput | Prisma.BrandLogoOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: Prisma.BrandLogoWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BrandLogos from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BrandLogos.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned BrandLogos
+    **/
+    _count?: true | BrandLogoCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+    **/
+    _min?: BrandLogoMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+    **/
+    _max?: BrandLogoMaxAggregateInputType;
+};
+export type GetBrandLogoAggregateType<T extends BrandLogoAggregateArgs> = {
+    [P in keyof T & keyof AggregateBrandLogo]: P extends '_count' | 'count' ? T[P] extends true ? number : Prisma.GetScalarType<T[P], AggregateBrandLogo[P]> : Prisma.GetScalarType<T[P], AggregateBrandLogo[P]>;
+};
+export type BrandLogoGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    where?: Prisma.BrandLogoWhereInput;
+    orderBy?: Prisma.BrandLogoOrderByWithAggregationInput | Prisma.BrandLogoOrderByWithAggregationInput[];
+    by: Prisma.BrandLogoScalarFieldEnum[] | Prisma.BrandLogoScalarFieldEnum;
+    having?: Prisma.BrandLogoScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: BrandLogoCountAggregateInputType | true;
+    _min?: BrandLogoMinAggregateInputType;
+    _max?: BrandLogoMaxAggregateInputType;
+};
+export type BrandLogoGroupByOutputType = {
+    id: string;
+    url: string;
+    createdAt: Date;
+    updatedAt: Date;
+    _count: BrandLogoCountAggregateOutputType | null;
+    _min: BrandLogoMinAggregateOutputType | null;
+    _max: BrandLogoMaxAggregateOutputType | null;
+};
+type GetBrandLogoGroupByPayload<T extends BrandLogoGroupByArgs> = Prisma.PrismaPromise<Array<Prisma.PickEnumerable<BrandLogoGroupByOutputType, T['by']> & {
+    [P in ((keyof T) & (keyof BrandLogoGroupByOutputType))]: P extends '_count' ? T[P] extends boolean ? number : Prisma.GetScalarType<T[P], BrandLogoGroupByOutputType[P]> : Prisma.GetScalarType<T[P], BrandLogoGroupByOutputType[P]>;
+}>>;
+export type BrandLogoWhereInput = {
+    AND?: Prisma.BrandLogoWhereInput | Prisma.BrandLogoWhereInput[];
+    OR?: Prisma.BrandLogoWhereInput[];
+    NOT?: Prisma.BrandLogoWhereInput | Prisma.BrandLogoWhereInput[];
+    id?: Prisma.StringFilter<"BrandLogo"> | string;
+    url?: Prisma.StringFilter<"BrandLogo"> | string;
+    createdAt?: Prisma.DateTimeFilter<"BrandLogo"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"BrandLogo"> | Date | string;
+};
+export type BrandLogoOrderByWithRelationInput = {
+    id?: Prisma.SortOrder;
+    url?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _relevance?: Prisma.BrandLogoOrderByRelevanceInput;
+};
+export type BrandLogoWhereUniqueInput = Prisma.AtLeast<{
+    id?: string;
+    AND?: Prisma.BrandLogoWhereInput | Prisma.BrandLogoWhereInput[];
+    OR?: Prisma.BrandLogoWhereInput[];
+    NOT?: Prisma.BrandLogoWhereInput | Prisma.BrandLogoWhereInput[];
+    url?: Prisma.StringFilter<"BrandLogo"> | string;
+    createdAt?: Prisma.DateTimeFilter<"BrandLogo"> | Date | string;
+    updatedAt?: Prisma.DateTimeFilter<"BrandLogo"> | Date | string;
+}, "id">;
+export type BrandLogoOrderByWithAggregationInput = {
+    id?: Prisma.SortOrder;
+    url?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+    _count?: Prisma.BrandLogoCountOrderByAggregateInput;
+    _max?: Prisma.BrandLogoMaxOrderByAggregateInput;
+    _min?: Prisma.BrandLogoMinOrderByAggregateInput;
+};
+export type BrandLogoScalarWhereWithAggregatesInput = {
+    AND?: Prisma.BrandLogoScalarWhereWithAggregatesInput | Prisma.BrandLogoScalarWhereWithAggregatesInput[];
+    OR?: Prisma.BrandLogoScalarWhereWithAggregatesInput[];
+    NOT?: Prisma.BrandLogoScalarWhereWithAggregatesInput | Prisma.BrandLogoScalarWhereWithAggregatesInput[];
+    id?: Prisma.StringWithAggregatesFilter<"BrandLogo"> | string;
+    url?: Prisma.StringWithAggregatesFilter<"BrandLogo"> | string;
+    createdAt?: Prisma.DateTimeWithAggregatesFilter<"BrandLogo"> | Date | string;
+    updatedAt?: Prisma.DateTimeWithAggregatesFilter<"BrandLogo"> | Date | string;
+};
+export type BrandLogoCreateInput = {
+    id?: string;
+    url: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BrandLogoUncheckedCreateInput = {
+    id?: string;
+    url: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BrandLogoUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    url?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BrandLogoUncheckedUpdateInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    url?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BrandLogoCreateManyInput = {
+    id?: string;
+    url: string;
+    createdAt?: Date | string;
+    updatedAt?: Date | string;
+};
+export type BrandLogoUpdateManyMutationInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    url?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BrandLogoUncheckedUpdateManyInput = {
+    id?: Prisma.StringFieldUpdateOperationsInput | string;
+    url?: Prisma.StringFieldUpdateOperationsInput | string;
+    createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+    updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string;
+};
+export type BrandLogoOrderByRelevanceInput = {
+    fields: Prisma.BrandLogoOrderByRelevanceFieldEnum | Prisma.BrandLogoOrderByRelevanceFieldEnum[];
+    sort: Prisma.SortOrder;
+    search: string;
+};
+export type BrandLogoCountOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    url?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BrandLogoMaxOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    url?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BrandLogoMinOrderByAggregateInput = {
+    id?: Prisma.SortOrder;
+    url?: Prisma.SortOrder;
+    createdAt?: Prisma.SortOrder;
+    updatedAt?: Prisma.SortOrder;
+};
+export type BrandLogoSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
+    id?: boolean;
+    url?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+}, ExtArgs["result"]["brandLogo"]>;
+export type BrandLogoSelectScalar = {
+    id?: boolean;
+    url?: boolean;
+    createdAt?: boolean;
+    updatedAt?: boolean;
+};
+export type BrandLogoOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "url" | "createdAt" | "updatedAt", ExtArgs["result"]["brandLogo"]>;
+export type $BrandLogoPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    name: "BrandLogo";
+    objects: {};
+    scalars: runtime.Types.Extensions.GetPayloadResult<{
+        id: string;
+        url: string;
+        createdAt: Date;
+        updatedAt: Date;
+    }, ExtArgs["result"]["brandLogo"]>;
+    composites: {};
+};
+export type BrandLogoGetPayload<S extends boolean | null | undefined | BrandLogoDefaultArgs> = runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload, S>;
+export type BrandLogoCountArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = Omit<BrandLogoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+    select?: BrandLogoCountAggregateInputType | true;
+};
+export interface BrandLogoDelegate<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: {
+        types: Prisma.TypeMap<ExtArgs>['model']['BrandLogo'];
+        meta: {
+            name: 'BrandLogo';
+        };
+    };
+    /**
+     * Find zero or one BrandLogo that matches the filter.
+     * @param {BrandLogoFindUniqueArgs} args - Arguments to find a BrandLogo
+     * @example
+     * // Get one BrandLogo
+     * const brandLogo = await prisma.brandLogo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends BrandLogoFindUniqueArgs>(args: Prisma.SelectSubset<T, BrandLogoFindUniqueArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find one BrandLogo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {BrandLogoFindUniqueOrThrowArgs} args - Arguments to find a BrandLogo
+     * @example
+     * // Get one BrandLogo
+     * const brandLogo = await prisma.brandLogo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends BrandLogoFindUniqueOrThrowArgs>(args: Prisma.SelectSubset<T, BrandLogoFindUniqueOrThrowArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first BrandLogo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandLogoFindFirstArgs} args - Arguments to find a BrandLogo
+     * @example
+     * // Get one BrandLogo
+     * const brandLogo = await prisma.brandLogo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends BrandLogoFindFirstArgs>(args?: Prisma.SelectSubset<T, BrandLogoFindFirstArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find the first BrandLogo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandLogoFindFirstOrThrowArgs} args - Arguments to find a BrandLogo
+     * @example
+     * // Get one BrandLogo
+     * const brandLogo = await prisma.brandLogo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends BrandLogoFindFirstOrThrowArgs>(args?: Prisma.SelectSubset<T, BrandLogoFindFirstOrThrowArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Find zero or more BrandLogos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandLogoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all BrandLogos
+     * const brandLogos = await prisma.brandLogo.findMany()
+     *
+     * // Get first 10 BrandLogos
+     * const brandLogos = await prisma.brandLogo.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const brandLogoWithIdOnly = await prisma.brandLogo.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends BrandLogoFindManyArgs>(args?: Prisma.SelectSubset<T, BrandLogoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>;
+    /**
+     * Create a BrandLogo.
+     * @param {BrandLogoCreateArgs} args - Arguments to create a BrandLogo.
+     * @example
+     * // Create one BrandLogo
+     * const BrandLogo = await prisma.brandLogo.create({
+     *   data: {
+     *     // ... data to create a BrandLogo
+     *   }
+     * })
+     *
+     */
+    create<T extends BrandLogoCreateArgs>(args: Prisma.SelectSubset<T, BrandLogoCreateArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Create many BrandLogos.
+     * @param {BrandLogoCreateManyArgs} args - Arguments to create many BrandLogos.
+     * @example
+     * // Create many BrandLogos
+     * const brandLogo = await prisma.brandLogo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends BrandLogoCreateManyArgs>(args?: Prisma.SelectSubset<T, BrandLogoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Delete a BrandLogo.
+     * @param {BrandLogoDeleteArgs} args - Arguments to delete one BrandLogo.
+     * @example
+     * // Delete one BrandLogo
+     * const BrandLogo = await prisma.brandLogo.delete({
+     *   where: {
+     *     // ... filter to delete one BrandLogo
+     *   }
+     * })
+     *
+     */
+    delete<T extends BrandLogoDeleteArgs>(args: Prisma.SelectSubset<T, BrandLogoDeleteArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Update one BrandLogo.
+     * @param {BrandLogoUpdateArgs} args - Arguments to update one BrandLogo.
+     * @example
+     * // Update one BrandLogo
+     * const brandLogo = await prisma.brandLogo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends BrandLogoUpdateArgs>(args: Prisma.SelectSubset<T, BrandLogoUpdateArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Delete zero or more BrandLogos.
+     * @param {BrandLogoDeleteManyArgs} args - Arguments to filter BrandLogos to delete.
+     * @example
+     * // Delete a few BrandLogos
+     * const { count } = await prisma.brandLogo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends BrandLogoDeleteManyArgs>(args?: Prisma.SelectSubset<T, BrandLogoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Update zero or more BrandLogos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandLogoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many BrandLogos
+     * const brandLogo = await prisma.brandLogo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends BrandLogoUpdateManyArgs>(args: Prisma.SelectSubset<T, BrandLogoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<Prisma.BatchPayload>;
+    /**
+     * Create or update one BrandLogo.
+     * @param {BrandLogoUpsertArgs} args - Arguments to update or create a BrandLogo.
+     * @example
+     * // Update or create a BrandLogo
+     * const brandLogo = await prisma.brandLogo.upsert({
+     *   create: {
+     *     // ... data to create a BrandLogo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the BrandLogo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends BrandLogoUpsertArgs>(args: Prisma.SelectSubset<T, BrandLogoUpsertArgs<ExtArgs>>): Prisma.Prisma__BrandLogoClient<runtime.Types.Result.GetResult<Prisma.$BrandLogoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>;
+    /**
+     * Count the number of BrandLogos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandLogoCountArgs} args - Arguments to filter BrandLogos to count.
+     * @example
+     * // Count the number of BrandLogos
+     * const count = await prisma.brandLogo.count({
+     *   where: {
+     *     // ... the filter for the BrandLogos we want to count
+     *   }
+     * })
+    **/
+    count<T extends BrandLogoCountArgs>(args?: Prisma.Subset<T, BrandLogoCountArgs>): Prisma.PrismaPromise<T extends runtime.Types.Utils.Record<'select', any> ? T['select'] extends true ? number : Prisma.GetScalarType<T['select'], BrandLogoCountAggregateOutputType> : number>;
+    /**
+     * Allows you to perform aggregations operations on a BrandLogo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandLogoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends BrandLogoAggregateArgs>(args: Prisma.Subset<T, BrandLogoAggregateArgs>): Prisma.PrismaPromise<GetBrandLogoAggregateType<T>>;
+    /**
+     * Group by BrandLogo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {BrandLogoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+    **/
+    groupBy<T extends BrandLogoGroupByArgs, HasSelectOrTake extends Prisma.Or<Prisma.Extends<'skip', Prisma.Keys<T>>, Prisma.Extends<'take', Prisma.Keys<T>>>, OrderByArg extends Prisma.True extends HasSelectOrTake ? {
+        orderBy: BrandLogoGroupByArgs['orderBy'];
+    } : {
+        orderBy?: BrandLogoGroupByArgs['orderBy'];
+    }, OrderFields extends Prisma.ExcludeUnderscoreKeys<Prisma.Keys<Prisma.MaybeTupleToUnion<T['orderBy']>>>, ByFields extends Prisma.MaybeTupleToUnion<T['by']>, ByValid extends Prisma.Has<ByFields, OrderFields>, HavingFields extends Prisma.GetHavingFields<T['having']>, HavingValid extends Prisma.Has<ByFields, HavingFields>, ByEmpty extends T['by'] extends never[] ? Prisma.True : Prisma.False, InputErrors extends ByEmpty extends Prisma.True ? `Error: "by" must not be empty.` : HavingValid extends Prisma.False ? {
+        [P in HavingFields]: P extends ByFields ? never : P extends string ? `Error: Field "${P}" used in "having" needs to be provided in "by".` : [
+            Error,
+            'Field ',
+            P,
+            ` in "having" needs to be provided in "by"`
+        ];
+    }[HavingFields] : 'take' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "take", you also need to provide "orderBy"' : 'skip' extends Prisma.Keys<T> ? 'orderBy' extends Prisma.Keys<T> ? ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields] : 'Error: If you provide "skip", you also need to provide "orderBy"' : ByValid extends Prisma.True ? {} : {
+        [P in OrderFields]: P extends ByFields ? never : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+    }[OrderFields]>(args: Prisma.SubsetIntersection<T, BrandLogoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetBrandLogoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the BrandLogo model
+     */
+    readonly fields: BrandLogoFieldRefs;
+}
+/**
+ * The delegate class that acts as a "Promise-like" for BrandLogo.
+ * Why is this prefixed with `Prisma__`?
+ * Because we want to prevent naming conflicts as mentioned in
+ * https://github.com/prisma/prisma-client-js/issues/707
+ */
+export interface Prisma__BrandLogoClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise";
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): runtime.Types.Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): runtime.Types.Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): runtime.Types.Utils.JsPromise<T>;
+}
+/**
+ * Fields of the BrandLogo model
+ */
+export interface BrandLogoFieldRefs {
+    readonly id: Prisma.FieldRef<"BrandLogo", 'String'>;
+    readonly url: Prisma.FieldRef<"BrandLogo", 'String'>;
+    readonly createdAt: Prisma.FieldRef<"BrandLogo", 'DateTime'>;
+    readonly updatedAt: Prisma.FieldRef<"BrandLogo", 'DateTime'>;
+}
+/**
+ * BrandLogo findUnique
+ */
+export type BrandLogoFindUniqueArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * Filter, which BrandLogo to fetch.
+     */
+    where: Prisma.BrandLogoWhereUniqueInput;
+};
+/**
+ * BrandLogo findUniqueOrThrow
+ */
+export type BrandLogoFindUniqueOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * Filter, which BrandLogo to fetch.
+     */
+    where: Prisma.BrandLogoWhereUniqueInput;
+};
+/**
+ * BrandLogo findFirst
+ */
+export type BrandLogoFindFirstArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * Filter, which BrandLogo to fetch.
+     */
+    where?: Prisma.BrandLogoWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BrandLogos to fetch.
+     */
+    orderBy?: Prisma.BrandLogoOrderByWithRelationInput | Prisma.BrandLogoOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for BrandLogos.
+     */
+    cursor?: Prisma.BrandLogoWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BrandLogos from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BrandLogos.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BrandLogos.
+     */
+    distinct?: Prisma.BrandLogoScalarFieldEnum | Prisma.BrandLogoScalarFieldEnum[];
+};
+/**
+ * BrandLogo findFirstOrThrow
+ */
+export type BrandLogoFindFirstOrThrowArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * Filter, which BrandLogo to fetch.
+     */
+    where?: Prisma.BrandLogoWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BrandLogos to fetch.
+     */
+    orderBy?: Prisma.BrandLogoOrderByWithRelationInput | Prisma.BrandLogoOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for BrandLogos.
+     */
+    cursor?: Prisma.BrandLogoWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BrandLogos from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BrandLogos.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of BrandLogos.
+     */
+    distinct?: Prisma.BrandLogoScalarFieldEnum | Prisma.BrandLogoScalarFieldEnum[];
+};
+/**
+ * BrandLogo findMany
+ */
+export type BrandLogoFindManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * Filter, which BrandLogos to fetch.
+     */
+    where?: Prisma.BrandLogoWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of BrandLogos to fetch.
+     */
+    orderBy?: Prisma.BrandLogoOrderByWithRelationInput | Prisma.BrandLogoOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing BrandLogos.
+     */
+    cursor?: Prisma.BrandLogoWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` BrandLogos from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` BrandLogos.
+     */
+    skip?: number;
+    distinct?: Prisma.BrandLogoScalarFieldEnum | Prisma.BrandLogoScalarFieldEnum[];
+};
+/**
+ * BrandLogo create
+ */
+export type BrandLogoCreateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * The data needed to create a BrandLogo.
+     */
+    data: Prisma.XOR<Prisma.BrandLogoCreateInput, Prisma.BrandLogoUncheckedCreateInput>;
+};
+/**
+ * BrandLogo createMany
+ */
+export type BrandLogoCreateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many BrandLogos.
+     */
+    data: Prisma.BrandLogoCreateManyInput | Prisma.BrandLogoCreateManyInput[];
+    skipDuplicates?: boolean;
+};
+/**
+ * BrandLogo update
+ */
+export type BrandLogoUpdateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * The data needed to update a BrandLogo.
+     */
+    data: Prisma.XOR<Prisma.BrandLogoUpdateInput, Prisma.BrandLogoUncheckedUpdateInput>;
+    /**
+     * Choose, which BrandLogo to update.
+     */
+    where: Prisma.BrandLogoWhereUniqueInput;
+};
+/**
+ * BrandLogo updateMany
+ */
+export type BrandLogoUpdateManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * The data used to update BrandLogos.
+     */
+    data: Prisma.XOR<Prisma.BrandLogoUpdateManyMutationInput, Prisma.BrandLogoUncheckedUpdateManyInput>;
+    /**
+     * Filter which BrandLogos to update
+     */
+    where?: Prisma.BrandLogoWhereInput;
+    /**
+     * Limit how many BrandLogos to update.
+     */
+    limit?: number;
+};
+/**
+ * BrandLogo upsert
+ */
+export type BrandLogoUpsertArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * The filter to search for the BrandLogo to update in case it exists.
+     */
+    where: Prisma.BrandLogoWhereUniqueInput;
+    /**
+     * In case the BrandLogo found by the `where` argument doesn't exist, create a new BrandLogo with this data.
+     */
+    create: Prisma.XOR<Prisma.BrandLogoCreateInput, Prisma.BrandLogoUncheckedCreateInput>;
+    /**
+     * In case the BrandLogo was found with the provided `where` argument, update it with this data.
+     */
+    update: Prisma.XOR<Prisma.BrandLogoUpdateInput, Prisma.BrandLogoUncheckedUpdateInput>;
+};
+/**
+ * BrandLogo delete
+ */
+export type BrandLogoDeleteArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+    /**
+     * Filter which BrandLogo to delete.
+     */
+    where: Prisma.BrandLogoWhereUniqueInput;
+};
+/**
+ * BrandLogo deleteMany
+ */
+export type BrandLogoDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Filter which BrandLogos to delete
+     */
+    where?: Prisma.BrandLogoWhereInput;
+    /**
+     * Limit how many BrandLogos to delete.
+     */
+    limit?: number;
+};
+/**
+ * BrandLogo without action
+ */
+export type BrandLogoDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BrandLogo
+     */
+    select?: Prisma.BrandLogoSelect<ExtArgs> | null;
+    /**
+     * Omit specific fields from the BrandLogo
+     */
+    omit?: Prisma.BrandLogoOmit<ExtArgs> | null;
+};
+export {};
