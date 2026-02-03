@@ -9,8 +9,7 @@
     "dev": "tsup src/server.ts --format esm --watch --onSuccess \"node dist/server.js\"",
     "dev:nodemon": "nodemon --exec tsx src/server.ts",
     "build": "tsup src/server.ts --format esm --clean --minify --sourcemap",
-    "postinstall": "prisma generate",
-    "db:push": "prisma db push"
+    "postinstall": "prisma db push && prisma generate"
   },
   "keywords": [],
   "author": "",
